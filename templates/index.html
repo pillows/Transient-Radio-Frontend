@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Transient-Radio-Search GUI</title>
+        <!-- Bootstrap core CSS -->
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Just for debugging purposes. Don't actually copy this line! -->
+        <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+        <style>
+            body {
+            padding-top: 50px;
+            }
+            .starter-template {
+            padding: 40px 15px;
+            text-align: center;
+            }
+            .htop50 {
+              height:50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Transient-Radio-Search</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="mailto:nycmattw@gmail.com">Contact</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+        <div class="container">
+            <form name="main" method="post" class="form-group">
+            <div class="starter-template">
+                <div class="row">
+              <div class="col-md-3">
+                <div class="htop50">
+                  <label class="details" for="fframe" data-toggle="tooltip" data-placement="right" title="in seconds &gt;  0hr">First time frame</label>
+                </div>
+                <div class="htop50">
+                  <label class="details" for="ftframe" data-toggle="tooltip" data-placement="right" title="in seconds &lt;  4hr">Final time frame</label>
+                </div>
+                <div class="htop50">
+                <label class="details" for="snmin" data-toggle="tooltip" data-placement="right" title="&gt; 5">S/N minimum</label>
+                </div>
+                <div class="htop50">
+                <label class="details" for="dmmin" data-toggle="tooltip" data-placement="right" title="in pc cm^-3 and &gt;    0">DM minimum trials</label>
+                </div>
+                <div class="htop50">
+                <label class="details" for="dmmax" data-toggle="tooltip" data-placement="right" title="in pc cm^-3 and &lt; 5000">DM maximum trials</label>
+                </div>
+                <div class="htop50">
+                <label class="details" for="tmin" data-toggle="tooltip" data-placement="right" title="in second and &gt; 0.0">Temporal min. decimation</label>
+                </div>
+                <div class="htop50">
+                <label class="details" for="Temporal max. decimation" data-toggle="tooltip" data-placement="right" title="in second and &lt; 10.0">Temporal max. decimation</label>
+                </div>
+                </div>
+              <div class="col-md-3">
+                <div class="htop50">
+                <input class="form-control" type="text" name="fframe" id="fframe"/>
+                </div>
+                <div class="htop50">
+                <input class="form-control" type="text" name="ftframe" id="ftframe"/>
+                </div>
+                <div class="htop50">
+                <input class="form-control" type="text" name="snmin" id="snmin"/>
+                </div>
+                <div class="htop50">
+                <input class="form-control" type="text" name="dmmin" id="dmmin"/>
+                </div>
+                <div class="htop50">
+                <input class="form-control" type="text" name="dmmax" id="dmmax"/>
+                </div>
+                <div class="htop50">
+                <input class="form-control" type="text" name="tmin" id="tmin"/>
+                </div>
+                <div class="htop50">
+                 <input class="form-control" type="text" name="tmax" id="tmax"/>
+                </div>
+                <input class="btn btn-primary" type="submit" />    
+              </div>
+              <div class="col-md-6">
+              <div id="result">
+                {% if postmd5 %}
+                  <img style="height:500px" src="static/img/{{ postmd5 }}.png">
+                {% endif %}
+              </div>
+                
+              </div>
+            </div>
+            </form>
+            <!--
+                <form name="main" method="post" class="form-group">
+                    <table class="table table-bordered">
+                        
+                        
+                        <tr>
+                            <th><label class="details" for="fframe" data-toggle="tooltip" data-placement="right" title="in seconds &gt;  0hr">First time frame</label></th>
+                            <td><input class="form-control" type="text" id="fframe"/></td>
+                        </tr>
+                        <tr>
+                            <th><label class="details" for="ftframe" data-toggle="tooltip" data-placement="right" title="in seconds &lt;  4hr">Final time frame</label></th>
+                            <td><input class="form-control" type="text" id="ftframe"/></td>
+                        </tr>
+                        <tr>
+                            <th><label class="details" for="snmin" data-toggle="tooltip" data-placement="right" title="&gt; 5">S/N minimum</label></th>
+                            <td><input class="form-control" type="text" id="snmin"/></td>
+                        </tr>
+                        <tr>
+                            <th><label class="details" for="dmmin" data-toggle="tooltip" data-placement="right" title="in pc cm^-3 and &gt;    0">DM minimum trials</label></th>
+                            <td><input class="form-control" id="dmmin"/></td>
+                        </tr>
+                        <tr>
+                            <th><label class="details" for="dmmax" data-toggle="tooltip" data-placement="right" title="in pc cm^-3 and &lt; 5000">DM maximum trials</label></th>
+                            <td><input class="form-control" type="text" id="dmmax"/></td>
+                        </tr>
+                        <tr>
+                            <th><label class="details" for="tmin" data-toggle="tooltip" data-placement="right" title="in second and &gt; 0.0">Temporal min. decimation</label></th>
+                            <td><input class="form-control" type="text" id="tmin"/></td>
+                        </tr>
+                        <tr>
+                            <th><label class="details" for="tmax" data-toggle="tooltip" data-placement="right" title="in second and &lt; 10.0">Temporal max. decimation</label></th>
+                            <td><input class="form-control" type="text" id="tmax"/></td>
+                        </tr>
+                    </table>
+                    <input type="submit" />    
+                </form>
+                -->
+            </div>
+        </div>
+        <!-- /.container -->
+        <!-- Bootstrap core JavaScript
+            ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+          $('.details').tooltip();
+           
+        });
+          
+        </script>
+    </body>
+</html>

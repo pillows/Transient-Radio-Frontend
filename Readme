@@ -1,0 +1,25 @@
+Transient Radio Search
+====================
+
+Python Transient Radio Search Project
+
+Pipeline:
+FFT.py
+    Use this code to do FFT on raw binary observation data to Numpy arry format for further analysis.
+dedisperse.py
+    This code Read in a spectrogram in Numpy array form,
+    mask out the radio frequency interference, use MPI to parallel compute the dedispersed
+    time series with Dispersion measure trials, record candicates over criterions in
+    text files.
+
+SQL.py
+    Convert the text files into SQL format database.
+
+web.py or plot.py
+    web.py: Read in the SQL database and plot the Cordes&McLaughlin style plot in user's browser.
+    plot.py: Read in text file plot the Cordes&McLaughlin style plot on your screen.
+
+For more detail please find my thesis at Virginia Tech ETD or this link
+http://hdl.handle.net/10919/70886
+
+Jr Wei Tsai
