@@ -1,0 +1,6 @@
+python-dev
+libibnetdisc-dev
+libblas-dev 
+libatlas-dev 
+liblapack-dev
+python-mpi4py
